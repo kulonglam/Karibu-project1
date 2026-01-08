@@ -1,0 +1,97 @@
+<section id="view-director-dash" class="view-section d-none p-4 p-lg-5">
+  <div class="d-flex justify-content-between align-items-center mb-5">
+    <div>
+      <h2 class="fw-bold">Director Dashboard</h2>
+      <p class="text-muted mb-0">Aggregated totals and strategic insights.</p>
+    </div>
+    <div class="d-flex gap-2">
+      <div class="btn-group bg-white border rounded p-1">
+        <button class="btn btn-sm btn-lime fw-bold px-3">YTD</button>
+        <button class="btn btn-sm text-muted px-3">Quarterly</button>
+        <button class="btn btn-sm text-muted px-3">Monthly</button>
+      </div>
+      <button class="btn btn-outline-dark btn-sm px-3">
+        <i class="bi bi-download me-2"></i>Export Report
+      </button>
+    </div>
+  </div>
+
+  <h6 class="text-muted fw-bold mb-3">
+    <i class="bi bi-cash-stack text-lime me-2"></i>Financial Overview
+  </h6>
+  <div class="row g-4 mb-5">
+    <div class="col-md">
+      <div class="card border-0 shadow-sm p-3 h-100">
+        <div class="d-flex justify-content-between mb-2">
+          <small class="text-muted">Total Revenue</small
+          ><span class="badge bg-success-subtle text-success">+12%</span>
+        </div>
+        <h3 class="fw-bold mb-1">UGX 1.2B</h3>
+        <small class="text-muted x-small">vs 1.0B last period</small>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="card border-0 shadow-sm p-3 h-100">
+        <div class="d-flex justify-content-between mb-2">
+          <small class="text-muted">Total Cash Sales</small
+          ><span class="badge bg-success-subtle text-success">+5%</span>
+        </div>
+        <h3 class="fw-bold mb-1">UGX 850M</h3>
+        <small class="text-muted x-small">70% of total revenue</small>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="card border-0 shadow-sm p-3 h-100">
+        <div class="d-flex justify-content-between mb-2">
+          <small class="text-muted">Outstanding Debt</small
+          ><span class="badge bg-danger-subtle text-danger">High</span>
+        </div>
+        <h3 class="fw-bold mb-1 text-danger">UGX 45M</h3>
+        <small class="text-muted x-small">Overdue > 30 days</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-8">
+      <div class="card border-0 shadow-sm p-4 h-100">
+        <div class="d-flex justify-content-between mb-4">
+          <h6 class="fw-bold m-0">Revenue vs. Procurement Cost</h6>
+          <a href="#" class="text-lime small fw-bold text-decoration-none"
+            >View Full Report</a
+          >
+        </div>
+        <div style="height: 300px"><canvas id="revenueChart"></canvas></div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card border-0 shadow-sm p-4 h-100">
+        <h6 class="fw-bold mb-4">Volume by Produce</h6>
+        <div class="mb-4">
+          <div class="d-flex justify-content-between small mb-1">
+            <span>Grain Maize</span><span class="fw-bold">120 tons</span>
+          </div>
+          <div class="progress" style="height: 8px">
+            <div class="progress-bar bg-lime" style="width: 80%"></div>
+          </div>
+        </div>
+        <div class="mb-4">
+          <div class="d-flex justify-content-between small mb-1">
+            <span>Beans</span><span class="fw-bold">85 tons</span>
+          </div>
+          <div class="progress" style="height: 8px">
+            <div class="progress-bar bg-lime" style="width: 65%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="d-flex justify-content-between small mb-1">
+            <span>Soybeans</span><span class="fw-bold">60 tons</span>
+          </div>
+          <div class="progress" style="height: 8px">
+            <div class="progress-bar bg-lime" style="width: 45%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,122 @@
+<section
+  id="login-view"
+  class="d-flex align-items-center justify-content-center min-vh-100 p-4"
+>
+  <div
+    class="login-container shadow-lg d-flex overflow-hidden bg-white rounded-4"
+  >
+    <div
+      class="login-left d-none d-lg-flex flex-column justify-content-between p-5 text-white"
+      style="
+        background-image: url('images/photo-side.jpg');
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      "
+    >
+      <div
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.4);
+        "
+      ></div>
+      <div
+        style="
+          position: relative;
+          z-index: 1;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+        "
+      >
+        <div class="d-flex align-items-center gap-2">
+          <div>
+            <img
+              src="images/logo.png"
+              width="100"
+              height="100"
+              alt=""
+              style="mix-blend-mode: lighten; background: transparent"
+            />
+          </div>
+          <span class="fw-bold fs-6">Karibu Groceries LTD</span>
+        </div>
+        <div class="mt-auto">
+          <h1 class="fs-4 fw-bold mb-2">
+            Managing Freshness,<br /><span class="text-lime"
+              >Enjoy the taste of fresh produce.</span
+            >
+          </h1>
+          <p class="opacity-75 small">
+            Secure access for Procurement, Stock Management, and Sales
+            operations.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="login-right p-5 d-flex flex-column justify-content-center bg-white"
+    >
+      <div class="mb-4">
+        <h2 class="fw-bold">Welcome back</h2>
+        <p class="text-muted">Please enter your details to sign in.</p>
+      </div>
+      <form id="loginForm">
+        <div class="mb-3">
+          <label class="form-label small fw-bold text-muted">USERNAME</label>
+          <input
+            type="text"
+            id="username"
+            class="form-control bg-light border-0 py-2.5"
+            placeholder="Enter your username"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label small fw-bold text-muted">PASSWORD</label>
+          <div class="input-group">
+            <input
+              type="password"
+              class="form-control bg-light border-0 py-2.5"
+              placeholder="password"
+              required
+            />
+            <span class="input-group-text bg-light border-0"
+              ><i class="bi bi-eye"></i
+            ></span>
+          </div>
+        </div>
+        <div
+          class="d-flex justify-content-between align-items-center mb-4 small"
+        >
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="remember" />
+            <label class="form-check-label text-muted" for="remember"
+              >Remember me</label
+            >
+          </div>
+          <a href="#" class="text-lime fw-bold text-decoration-none"
+            >Forgot Password?</a
+          >
+        </div>
+        <button
+          type="submit"
+          class="btn btn-primary-lime w-100 py-2 fw-bold mb-4"
+        >
+          Sign In <i class="bi bi-arrow-right ms-2"></i>
+        </button>
+      </form>
+      <div class="mt-auto text-center border-top pt-3">
+        <small class="text-muted x-small"
+          >Authorized access for Directors, Managers, and Sales Agents only.<br />All
+          activities are monitored.</small
+        >
+        <div class="mt-2 text-primary x-small"></div>
+      </div>
+    </div>
+  </div>
+</section>

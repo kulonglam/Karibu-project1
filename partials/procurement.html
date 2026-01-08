@@ -1,0 +1,143 @@
+<section id="view-procurement" class="view-section d-none p-4 p-lg-5">
+  <nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb x-small">
+      <li class="breadcrumb-item text-muted">Inventory</li>
+      <li class="breadcrumb-item active fw-bold">New Procurement Entry</li>
+    </ol>
+  </nav>
+  <h2 class="fw-bold mb-4">Procurement Entry Form</h2>
+  <div class="card border-0 shadow-sm p-4 p-lg-5">
+    <!-- Branch Information -->
+    <div class="mb-5">
+      <div class="d-flex align-items-center gap-2 text-lime mb-3">
+        <i class="bi bi-clock-history"></i>
+        <h6 class="fw-bold mb-0 text-dark">LOGISTICS INFORMATION</h6>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <label class="form-label fw-bold small">Branch Name</label
+          ><select class="form-select bg-light border-0 py-2">
+            <option>Select Branch</option>
+            <option>Maganjo</option>
+            <option>Matugga</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label fw-bold small">Date of Entry</label
+          ><input type="date" class="form-control bg-light border-0 py-2" />
+        </div>
+        <div class="col-md-4">
+          <label class="form-label fw-bold small">Time of Entry</label
+          ><input type="time" class="form-control bg-light border-0 py-2" />
+        </div>
+      </div>
+    </div>
+    <!-- Produce information -->
+    <div class="mb-5">
+      <div class="d-flex align-items-center gap-2 text-lime mb-3">
+        <i class="bi bi-basket"></i>
+        <h6 class="fw-bold mb-0 text-dark">PRODUCE DETAILS</h6>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <label class="form-label fw-bold small">Produce Name</label>
+          <div class="input-group">
+            <span class="input-group-text bg-light border-0"
+              ><i class="bi bi-bag"></i></span
+            ><input
+              type="text"
+              class="form-control bg-light border-0 py-2"
+              placeholder="e.g. Matooke"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label fw-bold small">Produce Type</label>
+          <div class="input-group">
+            <span class="input-group-text bg-light border-0"
+              ><i class="bi bi-boxes"></i></span
+            ><input
+              type="text"
+              class="form-control bg-light border-0 py-2"
+              placeholder="e.g. Fruit, Vegetable"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label fw-bold small">Tonnage (kgs)</label>
+          <div class="input-group">
+            <input
+              type="number"
+              class="form-control bg-light border-0 py-2"
+              placeholder="Min. 1000"
+            /><span class="input-group-text bg-light border-0">KG</span>
+          </div>
+          <small class="text-muted x-small"
+            >Minimum entry is 1000kg for bulk orders.</small
+          >
+        </div>
+      </div>
+    </div>
+    <!-- Financial information that include total cost and selling price for produce -->
+    <div class="row g-5">
+      <div class="col-md-6">
+        <div class="d-flex align-items-center gap-2 text-lime mb-3">
+          <i class="bi bi-cash"></i>
+          <h6 class="fw-bold mb-0 text-dark">FINANCIALS</h6>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-bold small">Total Cost (UgX)</label
+          ><input
+            type="number"
+            class="form-control bg-light border-0 py-2 text-end"
+            placeholder="0.00"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-bold small">Selling Price (UgX)/kg</label
+          ><input
+            type="number"
+            class="form-control bg-light border-0 py-2 text-end"
+            placeholder="0.00"
+          />
+        </div>
+      </div>
+      <!-- Supplier information -->
+      <div class="col-md-6">
+        <div class="d-flex align-items-center gap-2 text-lime mb-3">
+          <i class="bi bi-truck"></i>
+          <h6 class="fw-bold mb-0 text-dark">SUPPLIER INFORMATION</h6>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-bold small">Dealer Name</label>
+          <div class="input-group">
+            <span class="input-group-text bg-light border-0"
+              ><i class="bi bi-person"></i></span
+            ><input type="text" class="form-control bg-light border-0 py-2" />
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-bold small">Dealer Contact</label>
+          <div class="input-group">
+            <span class="input-group-text bg-light border-0"
+              ><i class="bi bi-telephone"></i></span
+            ><input
+              type="text"
+              class="form-control bg-light border-0 py-2"
+              value="+256 "
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Two button for submit and clearing of form -->
+    <div class="d-flex justify-content-end gap-3 mt-5">
+      <button class="btn btn-link text-muted text-decoration-none">
+        Clear Form
+      </button>
+      <button class="btn btn-primary-lime px-4 fw-bold">
+        <i class="bi bi-save me-2"></i> Save Procurement
+      </button>
+    </div>
+  </div>
+</section>

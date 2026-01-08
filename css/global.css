@@ -1,0 +1,114 @@
+/* Global/Base Styles */
+
+:root {
+  --primary-lime: #63ff1c;
+  --lime-hover: #52d615;
+  --dark-bg: #1a1a1a;
+  --sidebar-width: 260px;
+  --font-sans: 'Inter', sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* --- Brand Colors --- */
+.text-lime {
+  color: var(--primary-lime) !important;
+}
+
+.bg-lime {
+  background-color: var(--primary-lime) !important;
+}
+
+.btn-primary-lime {
+  background-color: var(--primary-lime);
+  color: #000;
+  border: none;
+  transition: all 0.2s;
+}
+
+.btn-primary-lime:hover {
+  background-color: var(--lime-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(99, 255, 28, 0.3);
+}
+
+.btn-lime {
+  background-color: var(--primary-lime);
+  color: black;
+  border: 1px solid var(--primary-lime);
+}
+
+/* --- Utility Classes --- */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.w-fit {
+  width: fit-content;
+}
+
+.center-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.avatar-sm {
+  width: 32px;
+  height: 32px;
+  font-size: 0.8rem;
+}
+
+.x-small {
+  font-size: 0.75rem;
+}
+
+.tracking-tight {
+  letter-spacing: -0.5px;
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+  transition: 0.2s;
+}
+
+.dot {
+  width: 30px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.dot.active {
+  background: var(--primary-lime);
+}
+
+/* --- Badge Colors --- */
+.bg-success-subtle {
+  background-color: #dcfce7 !important;
+  color: #166534 !important;
+}
+
+.bg-warning-subtle {
+  background-color: #fef9c3 !important;
+  color: #854d0e !important;
+}
+
+.bg-danger-subtle {
+  background-color: #fee2e2 !important;
+  color: #991b1b !important;
+}
+
+.bg-primary-subtle {
+  background-color: #dbeafe !important;
+  color: #1e3a8a !important;
+}

@@ -1,0 +1,16 @@
+/* Cash Sale Form Styles */
+
+#cashQty,
+#cashPrice,
+#cashPaid {
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+#cashQty:focus,
+#cashPrice:focus,
+#cashPaid:focus {
+  border-color: var(--primary-lime);
+  box-shadow: 0 0 0 3px rgba(99, 255, 28, 0.1);
+}

@@ -1,0 +1,121 @@
+<section id="view-credit-sale" class="view-section d-none p-4 p-lg-5">
+  <nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb x-small">
+      <li class="breadcrumb-item">
+        <a
+          href="#"
+          class="text-muted text-decoration-none"
+          onclick="navigateTo('view-agent-home')"
+          >Home</a
+        >
+      </li>
+      <li class="breadcrumb-item active fw-bold">New Credit Sale</li>
+    </ol>
+  </nav>
+  <h2 class="fw-bold mb-4">Credit Sales Form</h2>
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="card border-0 shadow-sm p-4">
+        <h6 class="fw-bold text-lime mb-3">
+          <i class="bi bi-person-badge me-2"></i>Buyer Information
+        </h6>
+        <div class="row g-3 mb-4">
+          <div class="col-md-6">
+            <label class="form-label x-small fw-bold">Buyer's Name *</label
+            ><input type="text" class="form-control bg-light border-0" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label x-small fw-bold">National ID (NIN) *</label
+            ><input type="text" class="form-control bg-light border-0" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label x-small fw-bold">Location *</label
+            ><input type="text" class="form-control bg-light border-0" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label x-small fw-bold">Contact Number *</label
+            ><input
+              type="text"
+              class="form-control bg-light border-0"
+              value="+256 "
+            />
+          </div>
+        </div>
+        <hr class="border-light mb-4" />
+        <h6 class="fw-bold text-lime mb-3">
+          <i class="bi bi-cart me-2"></i>Transaction Details
+        </h6>
+        <div class="row g-3 mb-4">
+          <div class="col-md-6">
+            <label class="form-label x-small fw-bold">Dispatch Date</label
+            ><input type="date" class="form-control bg-light border-0" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label x-small fw-bold">Produce Name</label
+            ><select class="form-select bg-light border-0">
+              <option>Select Produce</option>
+              <option>Grains Maize</option>
+              <option>Beans</option>
+              <option>Ground-nuts</option>
+              <option>Soybeans</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label x-small fw-bold">Produce Type</label
+            ><input
+              type="text"
+              class="form-control bg-light border-0"
+              placeholder="e.g. Grade A - Dried"
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label x-small fw-bold">Tonnage (kgs)</label
+            ><input
+              type="number"
+              class="form-control bg-light border-0"
+              placeholder="0"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card border-0 shadow-sm p-4">
+        <h6 class="fw-bold mb-4">
+          <i class="bi bi-cash-coin me-2"></i>Financial Summary
+        </h6>
+        <div class="bg-light p-3 rounded mb-3">
+          <div class="d-flex justify-content-between mb-2">
+            <span class="text-muted small">Selling Price / kg</span
+            ><span class="fw-bold">UgX 1,200</span>
+          </div>
+          <hr />
+          <small class="text-success fw-bold d-block">Total Amount Due</small>
+          <h2 class="fw-bold text-success">UgX 0</h2>
+        </div>
+        <div class="mb-4">
+          <label class="form-label x-small fw-bold text-danger"
+            >Due Date *</label
+          >
+          <input
+            type="date"
+            class="form-control border-danger bg-danger-subtle"
+          />
+          <small class="text-muted x-small mt-1 d-block"
+            ><i class="bi bi-info-circle me-1"></i> Standard terms: 30
+            days</small
+          >
+        </div>
+        <button class="btn btn-primary-lime w-100 fw-bold py-2">
+          Record Credit Sale
+        </button>
+        <button
+          class="btn btn-light w-100 mt-2 text-muted"
+          onclick="navigateTo('view-agent-home')"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
