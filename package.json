@@ -16,7 +16,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "format:check": "prettier --check .",
-    "lint:check": "eslint ."
+    "lint:check": "eslint .",
+    "test": "echo \"No tests configured yet\""
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,css,md}": [

@@ -45,7 +45,7 @@ window.ROLES = {
   },
 };
 
-// === 1. NAVIGATION LOGIC ===
+// navigation login based on role
 
 // eslint-disable-next-line no-unused-vars
 function navigateTo(targetId) {
