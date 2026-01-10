@@ -1,3 +1,4 @@
+<!-- Partial: credit-sale.html - Credit sale form partial -->
 <section id="view-credit-sale" class="view-section d-none p-4 p-lg-5">
   <nav aria-label="breadcrumb" class="mb-3">
     <ol class="breadcrumb x-small">
@@ -12,109 +13,197 @@
       <li class="breadcrumb-item active fw-bold">New Credit Sale</li>
     </ol>
   </nav>
-  <h2 class="fw-bold mb-4">Credit Sales Form</h2>
-  <div class="row">
-    <div class="col-lg-8">
-      <div class="card border-0 shadow-sm p-4">
-        <h6 class="fw-bold text-lime mb-3">
-          <i class="bi bi-person-badge me-2"></i>Buyer Information
-        </h6>
-        <div class="row g-3 mb-4">
-          <div class="col-md-6">
-            <label class="form-label x-small fw-bold">Buyer's Name *</label
-            ><input type="text" class="form-control bg-light border-0" />
+
+  <!-- Main form wrapper -->
+  <div class="container">
+    <div class="form-wrapper">
+      <h1>Credit Sale Entry</h1>
+      <p class="text-center text-muted mb-4">
+        Enter the detail below to record credit Sale
+      </p>
+
+      <div>
+        <!-- Credit sale form - records sales on account for trusted partners -->
+        <form action="/submit-credit">
+          <!-- Section 1: Buyer identification and contact details -->
+          <fieldset>
+            <legend>Buyer Information</legend>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="buyer_name" class="form-label">Buyer Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="buyer_name"
+                  name="buyer_name"
+                  minlength="2"
+                  placeholder="Company or Individual Name"
+                  required
+                />
+                <div class="form-text">
+                  Must be alphanumeric, at least 2 characters.
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="nin" class="form-label">National ID (NIN)</label>
+                <!-- NIN: 14-character unique identifier for buyers -->
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nin"
+                  name="nin"
+                  placeholder="e.g. CM89023106X5HA"
+                  pattern="[A-Za-z0-9]{14}"
+                  required
+                />
+                <div class="form-text">Standard 14-character NIN format.</div>
+              </div>
+              <div class="col-md-6">
+                <label for="contacts" class="form-label">Contacts</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="contacts"
+                  name="contacts"
+                  placeholder="+256..."
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="location" class="form-label">Location</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="location"
+                  name="location"
+                  minlength="2"
+                  required
+                />
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Section 2: Product/produce information and quantity -->
+          <fieldset>
+            <legend>Produce Details</legend>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="produce_name" class="form-label"
+                  >Produce Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="produce_name"
+                  name="produce_name"
+                  minlength="2"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="produce_type" class="form-label"
+                  >Type of Produce</label
+                >
+                <select
+                  class="form-select"
+                  id="produce_type"
+                  name="produce_type"
+                  required
+                >
+                  <option value="">-- Select Type --</option>
+                  <option value="cereals">Cereals / Grains</option>
+                  <option value="legumes">Legumes / Beans</option>
+                  <option value="root_tubers">Root Tubers</option>
+                  <option value="coffee">Coffee</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="tonnage" class="form-label"
+                  >Tonnage (kgs/tons)</label
+                >
+                <!-- Quantity measurement in kilograms or tons -->
+                <input
+                  type="number"
+                  class="form-control"
+                  id="tonnage"
+                  name="tonnage"
+                  step="0.01"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="dispatch_date" class="form-label"
+                  >Date of Dispatch</label
+                >
+                <input
+                  type="date"
+                  class="form-control"
+                  id="dispatch_date"
+                  name="dispatch_date"
+                  required
+                />
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Section 3: Credit terms, payment amount and deadline -->
+          <fieldset>
+            <legend>Credit Terms</legend>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="amount_due" class="form-label"
+                  >Amount Due (UGX)</label
+                >
+                <!-- Total credit amount in Ugandan Shillings (minimum 10,000) -->
+                <input
+                  type="number"
+                  class="form-control"
+                  id="amount_due"
+                  name="amount_due"
+                  min="10000"
+                  placeholder="Min 5 digits"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="due_date" class="form-label">Due Date</label>
+                <!-- Credit payment deadline - buyer must pay by this date -->
+                <input
+                  type="date"
+                  class="form-control"
+                  id="due_date"
+                  name="due_date"
+                  required
+                />
+              </div>
+              <div class="col-12">
+                <label for="sales_agent" class="form-label"
+                  >Sales Agent Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="sales_agent"
+                  name="sales_agent"
+                  minlength="2"
+                  required
+                />
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Form action buttons -->
+          <div class="d-flex justify-content-end gap-2 mt-4">
+            <!-- Submit button: saves credit sale record -->
+            <button type="submit" class="btn btn-primary-lime">
+              <i class="bi bi-printer me-2"></i>
+              Record Credit Sale
+            </button>
+            <!-- Reset button: clears all form fields -->
+            <button type="reset" class="btn btn-danger">Clear Form</button>
           </div>
-          <div class="col-md-6">
-            <label class="form-label x-small fw-bold">National ID (NIN) *</label
-            ><input type="text" class="form-control bg-light border-0" />
-          </div>
-          <div class="col-md-6">
-            <label class="form-label x-small fw-bold">Location *</label
-            ><input type="text" class="form-control bg-light border-0" />
-          </div>
-          <div class="col-md-6">
-            <label class="form-label x-small fw-bold">Contact Number *</label
-            ><input
-              type="text"
-              class="form-control bg-light border-0"
-              value="+256 "
-            />
-          </div>
-        </div>
-        <hr class="border-light mb-4" />
-        <h6 class="fw-bold text-lime mb-3">
-          <i class="bi bi-cart me-2"></i>Transaction Details
-        </h6>
-        <div class="row g-3 mb-4">
-          <div class="col-md-6">
-            <label class="form-label x-small fw-bold">Dispatch Date</label
-            ><input type="date" class="form-control bg-light border-0" />
-          </div>
-          <div class="col-md-6">
-            <label class="form-label x-small fw-bold">Produce Name</label
-            ><select class="form-select bg-light border-0">
-              <option>Select Produce</option>
-              <option>Grains Maize</option>
-              <option>Beans</option>
-              <option>Ground-nuts</option>
-              <option>Soybeans</option>
-            </select>
-          </div>
-          <div class="col-md-6">
-            <label class="form-label x-small fw-bold">Produce Type</label
-            ><input
-              type="text"
-              class="form-control bg-light border-0"
-              placeholder="e.g. Grade A - Dried"
-            />
-          </div>
-          <div class="col-md-6">
-            <label class="form-label x-small fw-bold">Tonnage (kgs)</label
-            ><input
-              type="number"
-              class="form-control bg-light border-0"
-              placeholder="0"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="card border-0 shadow-sm p-4">
-        <h6 class="fw-bold mb-4">
-          <i class="bi bi-cash-coin me-2"></i>Financial Summary
-        </h6>
-        <div class="bg-light p-3 rounded mb-3">
-          <div class="d-flex justify-content-between mb-2">
-            <span class="text-muted small">Selling Price / kg</span
-            ><span class="fw-bold">UgX 1,200</span>
-          </div>
-          <hr />
-          <small class="text-success fw-bold d-block">Total Amount Due</small>
-          <h2 class="fw-bold text-success">UgX 0</h2>
-        </div>
-        <div class="mb-4">
-          <label class="form-label x-small fw-bold text-danger"
-            >Due Date *</label
-          >
-          <input
-            type="date"
-            class="form-control border-danger bg-danger-subtle"
-          />
-          <small class="text-muted x-small mt-1 d-block"
-            ><i class="bi bi-info-circle me-1"></i> Standard terms: 30
-            days</small
-          >
-        </div>
-        <button class="btn btn-primary-lime w-100 fw-bold py-2">
-          Record Credit Sale
-        </button>
-        <button
-          class="btn btn-light w-100 mt-2 text-muted"
-          onclick="navigateTo('view-agent-home')"
-        >
-          Cancel
-        </button>
+        </form>
       </div>
     </div>
   </div>

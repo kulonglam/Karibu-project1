@@ -1,5 +1,9 @@
-/* Login Partial Styles */
+/**
+ * login.css - Login page specific styles
+ * Styles for the authentication/login form layout
+ */
 
+/* Main login container with two-column layout */
 .login-container {
   width: 100%;
   max-width: 1000px;
@@ -8,13 +12,114 @@
 
 .login-left {
   flex: 1;
+  position: relative;
+  /* Background image with dark overlay for branding */
   background:
-    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
-    url('images/photo-side.jpg');
+    linear-gradient(rgba(32, 32, 32, 0.6), rgba(0, 0, 0, 0.8)),
+    url('../images/login.png');
   background-size: cover;
   background-position: center;
 }
 
 .login-right {
   flex: 1;
+  /* Right side contains the login form */
+}
+
+.login-left-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.login-left-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.login-left .login-brand-img {
+  mix-blend-mode: lighten;
+  background: transparent;
+}
+/* Responsive Media Queries */
+@media (max-width: 992px) {
+  .login-container {
+    min-height: 500px;
+  }
+
+  .login-right {
+    padding: 2rem 1.5rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    border-radius: 1rem;
+  }
+
+  .login-left {
+    display: none;
+  }
+
+  .login-right {
+    padding: 1.5rem !important;
+  }
+
+  .login-right h2 {
+    font-size: 1.3rem;
+  }
+
+  .form-control {
+    padding: 0.5rem 0.6rem;
+    font-size: 16px;
+  }
+
+  .input-group {
+    margin-bottom: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    min-height: 100vh;
+    border-radius: 0;
+  }
+
+  .login-right {
+    padding: 1rem !important;
+  }
+
+  .login-right h2 {
+    font-size: 1.2rem;
+  }
+
+  .login-right p {
+    font-size: 0.85rem;
+  }
+
+  .form-label {
+    font-size: 0.75rem;
+  }
+
+  .form-control {
+    padding: 0.45rem 0.5rem;
+    font-size: 16px;
+    border-radius: 6px;
+  }
+
+  .btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .form-check-label {
+    font-size: 0.85rem;
+  }
+
+  .text-center small {
+    font-size: 0.7rem;
+  }
 }

@@ -1,63 +1,44 @@
+<!-- Partial: login.html - Login screen partial used on app load -->
 <section
   id="login-view"
   class="d-flex align-items-center justify-content-center min-vh-100 p-4"
 >
+  <!-- Login container with branding on left, form on right -->
   <div
     class="login-container shadow-lg d-flex overflow-hidden bg-white rounded-4"
   >
+    <!-- Left side: Branding and tagline (desktop only) -->
     <div
       class="login-left d-none d-lg-flex flex-column justify-content-between p-5 text-white"
-      style="
-        background-image: url('images/photo-side.jpg');
-        background-size: cover;
-        background-position: center;
-        position: relative;
-      "
     >
-      <div
-        style="
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: rgba(0, 0, 0, 0.4);
-        "
-      ></div>
-      <div
-        style="
-          position: relative;
-          z-index: 1;
-          display: flex;
-          flex-direction: column;
-          height: 100%;
-        "
-      >
+      <div class="login-left-overlay"></div>
+      <div class="login-left-content">
         <div class="d-flex align-items-center gap-2">
           <div>
             <img
               src="images/logo.png"
-              width="100"
-              height="100"
+              width="50"
+              height="50"
               alt=""
-              style="mix-blend-mode: lighten; background: transparent"
+              class="login-brand-img"
             />
           </div>
-          <span class="fw-bold fs-6">Karibu Groceries LTD</span>
+          <span class="fw-bold fs-2">Karibu Groceries LTD</span>
         </div>
         <div class="mt-auto">
-          <h1 class="fs-4 fw-bold mb-2">
-            Managing Freshness,<br /><span class="text-lime"
-              >Enjoy the taste of fresh produce.</span
+          <h1 class="fs-1 fw-bold mb-2 text-success">
+            Managing Freshness,<br /><span class="fs-4 text-white"
+              >Enjoy the taste of Whole Sale fresh produce.</span
             >
           </h1>
-          <p class="opacity-75 small">
+          <p class="opacity-75 small mb-4">
             Secure access for Procurement, Stock Management, and Sales
             operations.
           </p>
         </div>
       </div>
     </div>
+    <!-- Right side: Login form -->
     <div
       class="login-right p-5 d-flex flex-column justify-content-center bg-white"
     >
@@ -65,7 +46,7 @@
         <h2 class="fw-bold">Welcome back</h2>
         <p class="text-muted">Please enter your details to sign in.</p>
       </div>
-      <form id="loginForm">
+      <form id="loginForm" class="needs-validation" novalidate>
         <div class="mb-3">
           <label class="form-label small fw-bold text-muted">USERNAME</label>
           <input
@@ -75,18 +56,24 @@
             placeholder="Enter your username"
             required
           />
+          <div class="form-error"></div>
         </div>
         <div class="mb-3">
           <label class="form-label small fw-bold text-muted">PASSWORD</label>
           <div class="input-group">
             <input
               type="password"
+              id="password"
               class="form-control bg-light border-0 py-2.5"
               placeholder="password"
               required
             />
-            <span class="input-group-text bg-light border-0"
-              ><i class="bi bi-eye"></i
+            <div class="form-error"></div>
+            <span
+              class="input-group-text bg-light border-0 cursor-pointer"
+              id="passwordToggle"
+              onclick="togglePasswordVisibility()"
+              ><i class="bi bi-eye" id="passwordIcon"></i
             ></span>
           </div>
         </div>
@@ -99,7 +86,7 @@
               >Remember me</label
             >
           </div>
-          <a href="#" class="text-lime fw-bold text-decoration-none"
+          <a href="#" class="text-blue fw-bold text-decoration-none"
             >Forgot Password?</a
           >
         </div>

@@ -1,0 +1,93 @@
+/**
+ * credit-sale.css - Credit sale form specific styles
+ * Styles for account/credit-based sales with buyer information and payment terms
+ */
+
+body {
+  background-color: #f8f9f9;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+/* Form container with transparent background */
+.form-wrapper {
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Page and section headings with green theme */
+h1,
+h2 {
+  color: #1e8449;
+  font-weight: 700;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+/* Tab navigation styling for form sections */
+.nav-tabs .nav-link {
+  color: #495057;
+  font-weight: 600;
+}
+
+/* Active tab indicator - green color with bottom border */
+.nav-tabs .nav-link.active {
+  color: #1e8449;
+  border-color: #dee2e6 #dee2e6 #fff;
+  border-top: 3px solid #1e8449;
+}
+
+/* Form section grouping with bordered container */
+fieldset {
+  border: 1px solid #d5dbdb;
+  margin-bottom: 15 #d5dbdb;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+/* Section labels positioned at top of fieldset */
+legend {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1e8449;
+  float: none;
+  width: auto;
+  padding: 0 10px;
+}
+
+/* Input focus state with green theme accent */
+.form-control:focus,
+.form-select:focus {
+  border-color: #1e8449;
+  box-shadow: 0 0 5px rgba(30, 132, 73, 0.4);
+}
+
+/* Form field labels with consistent styling */
+.form-label {
+  font-weight: 600;
+  color: #343a40;
+  font-size: 0.9rem;
+}
+
+/* Primary submit button styling */
+.btn-custom-submit {
+  background-color: #2ecc71;
+  color: white;
+  font-weight: 700;
+  border: none;
+}
+
+/* Submit button hover state - darker green */
+.btn-custom-submit:hover {
+  background-color: #156543;
+  color: white;
+}

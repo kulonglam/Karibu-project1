@@ -1,5 +1,9 @@
-/* Director Dashboard Styles */
+/**
+ * director-dashboard.css - Director dashboard specific styles
+ * Styles for the director dashboard view with financial metrics and charts
+ */
 
+/* Chart container dimensions - responsive chart height */
 #revenueChart {
   width: 100%;
   height: 300px;

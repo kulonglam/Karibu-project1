@@ -1,0 +1,168 @@
+<!-- Partial: inventory.html - Inventory list and controls partial -->
+<section id="view-inventory" class="view-section d-none p-4 p-lg-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="fw-bold">
+        <i class="bi bi-box-seam text-lime me-2"></i>Inventory Management
+      </h2>
+      <p class="text-muted small">View and manage current stock levels</p>
+    </div>
+    <div>
+      <input
+        type="text"
+        class="form-control form-control-sm"
+        placeholder="Search items..."
+        style="width: 250px"
+      />
+    </div>
+  </div>
+
+  <!-- Inventory summary statistics -->
+  <div class="row g-3 mb-4">
+    <div class="col-md-3">
+      <div class="card bg-light border-0 p-3">
+        <small class="text-muted d-block mb-1">Total Items</small>
+        <h4 class="fw-bold m-0">24</h4>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card bg-light border-0 p-3">
+        <small class="text-muted d-block mb-1">Low Stock</small>
+        <!-- Items with quantity below minimum threshold -->
+        <h4 class="fw-bold m-0 text-warning">3</h4>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card bg-light border-0 p-3">
+        <small class="text-muted d-block mb-1">Out of Stock</small>
+        <!-- Items with zero quantity -->
+        <h4 class="fw-bold m-0 text-danger">1</h4>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card bg-light border-0 p-3">
+        <small class="text-muted d-block mb-1">Total Value</small>
+        <h4 class="fw-bold m-0 text-success">UGX 2.4M</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="card border-0 shadow-sm">
+    <div class="p-4 border-bottom">
+      <!-- Stock list table with product details and quantities -->
+      <h6 class="fw-bold m-0">Stock List</h6>
+    </div>
+    <div class="table-responsive">
+      <table class="table align-middle mb-0">
+        <thead class="bg-light text-uppercase x-small text-muted">
+          <tr>
+            <th class="ps-4">Item Name</th>
+            <th>Category</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Status</th>
+            <th>Total Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="ps-4 fw-bold">Grain Maize</td>
+            <td class="text-muted">Cereal</td>
+            <td>UGX 80/kg</td>
+            <td>145 kg</td>
+            <td>
+              <span class="badge bg-success-subtle text-success">In Stock</span>
+            </td>
+            <td>UGX 11,600</td>
+          </tr>
+          <tr>
+            <td class="ps-4 fw-bold">Beans</td>
+            <td class="text-muted">Cereal</td>
+            <td>UGX 40/kg</td>
+            <td>8 kg</td>
+            <td>
+              <span class="badge bg-warning-subtle text-warning"
+                >Low Stock</span
+              >
+            </td>
+            <td>UGX 320</td>
+          </tr>
+          <tr>
+            <td class="ps-4 fw-bold">Grain Maize</td>
+            <td class="text-muted">Cereal</td>
+            <td>UGX 120/kg</td>
+            <td>52 kg</td>
+            <td>
+              <span class="badge bg-success-subtle text-success">In Stock</span>
+            </td>
+            <td>UGX 6,240</td>
+          </tr>
+          <tr>
+            <td class="ps-4 fw-bold">Beans</td>
+            <td class="text-muted">Legumes & Pulse</td>
+            <td>UGX 60/kg</td>
+            <td>0 kg</td>
+            <td>
+              <span class="badge bg-danger-subtle text-danger"
+                >Out of Stock</span
+              >
+            </td>
+            <td>UGX 0</td>
+          </tr>
+          <tr>
+            <td class="ps-4 fw-bold">Groundnuts</td>
+            <td class="text-muted">Legumes & Pulse</td>
+            <td>UGX 30/kg</td>
+            <td>24 kg</td>
+            <td>
+              <span class="badge bg-success-subtle text-success">In Stock</span>
+            </td>
+            <td>UGX 720</td>
+          </tr>
+          <tr>
+            <td class="ps-4 fw-bold">Groundnuts</td>
+            <td class="text-muted">Legumes & Pulse</td>
+            <td>UGX 25/kg</td>
+            <td>18 kg</td>
+            <td>
+              <span class="badge bg-warning-subtle text-warning"
+                >Low Stock</span
+              >
+            </td>
+            <td>UGX 450</td>
+          </tr>
+          <tr>
+            <td class="ps-4 fw-bold">Cowpeas</td>
+            <td class="text-muted">Legumes & Pulse</td>
+            <td>UGX 35/kg</td>
+            <td>95 kg</td>
+            <td>
+              <span class="badge bg-success-subtle text-success">In Stock</span>
+            </td>
+            <td>UGX 3,325</td>
+          </tr>
+          <tr>
+            <td class="ps-4 fw-bold">Soybeans</td>
+            <td class="text-muted">Oilseeds</td>
+            <td>UGX 50/kg</td>
+            <td>200 kg</td>
+            <td>
+              <span class="badge bg-success-subtle text-success">In Stock</span>
+            </td>
+            <td>UGX 10,000</td>
+          </tr>
+          <tr>
+            <td class="ps-4 fw-bold">Soybeans</td>
+            <td class="text-muted">Oilseeds</td>
+            <td>UGX 50/kg</td>
+            <td>200 kg</td>
+            <td>
+              <span class="badge bg-success-subtle text-success">In Stock</span>
+            </td>
+            <td>UGX 10,000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

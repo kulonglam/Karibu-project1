@@ -1,3 +1,4 @@
+<!-- Partial: cash-sale.html - Cash Sale entry form (partial) -->
 <section id="view-cash-sale" class="view-section d-none p-4 p-lg-5">
   <nav aria-label="breadcrumb" class="mb-3">
     <ol class="breadcrumb x-small">
@@ -9,186 +10,355 @@
           >Home</a
         >
       </li>
-      <li class="breadcrumb-item text-muted">Sales</li>
-      <li class="breadcrumb-item active fw-bold">Cash Sale Entry</li>
+      <li class="breadcrumb-item active" aria-current="page">
+        Cash Sale Entry
+      </li>
     </ol>
   </nav>
+  <!-- Main form container -->
+  <div class="container">
+    <div class="form-wrapper">
+      <h1 class="text-center mb-3">Sales Entry Form</h1>
+      <p class="lead-text">Fill the detail below to record new sale</p>
 
-  <div class="row">
-    <div class="col-lg-8">
-      <h2 class="fw-bold mb-4">Record Cash Sale</h2>
-      <div class="card border-0 shadow-sm p-4">
-        <div class="row g-3 mb-4">
-          <div class="col-md-4">
-            <label class="small fw-bold text-muted">Date</label
-            ><input
-              type="date"
-              class="form-control bg-light border-0"
-              value="date"
-            />
-          </div>
-          <div class="col-md-4">
-            <label class="small fw-bold text-muted">Time</label
-            ><input
-              type="time"
-              class="form-control bg-light border-0"
-              value="time"
-            />
-          </div>
-          <div class="col-md-4">
-            <label class="small fw-bold text-muted">Agent</label
-            ><input
-              type="text"
-              class="form-control bg-light border-0"
-              value="Kulong"
-              readonly
-            />
-          </div>
-        </div>
-
-        <div class="row g-3 mb-4">
-          <div class="col-md-6">
-            <label class="fw-bold form-label">Buyer's Name</label
-            ><input
-              type="text"
-              class="form-control bg-light border-0 py-2"
-              placeholder="Enter customer name"
-            />
-          </div>
-          <div class="col-md-6">
-            <div class="d-flex justify-content-between">
-              <label class="fw-bold form-label">Produce Name</label
-              ><span class="x-small text-success fw-bold"
-                >In Stock: 5,420 kgs</span
+      <form action="/submit">
+        <!-- Section 1: Transaction identification and timestamp -->
+        <fieldset>
+          <legend>Transaction Details</legend>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="sale_id" class="form-label"
+                >Sale ID / Receipt No.</label
               >
+              <!-- Auto-generated receipt number for tracking - read-only field -->
+              <input
+                type="text"
+                class="form-control"
+                id="sale_id"
+                name="sale_id"
+                value="S-202511300001"
+                readonly
+              />
             </div>
-            <select class="form-select bg-light border-0 py-2">
-              <option>Grains Maize</option>
-              <option>Beans</option>
-              <option>Soybeans</option>
-            </select>
-          </div>
-        </div>
-
-        <div
-          class="bg-light p-4 rounded-3 mb-4 border border-dashed d-flex flex-wrap flex-md-nowrap align-items-center gap-2"
-        >
-          <div class="flex-grow-1">
-            <label class="x-small fw-bold text-muted text-uppercase"
-              >Tonnage (kgs)</label
-            >
-            <input
-              type="number"
-              id="cashQty"
-              class="form-control border-0 fw-bold fs-5 bg-white shadow-sm text-center"
-              placeholder="0"
-            />
-          </div>
-          <div class="text-muted h4 mb-0 pt-3">x</div>
-          <div class="flex-grow-1">
-            <label class="x-small fw-bold text-muted text-uppercase"
-              >Price / Kg</label
-            >
-            <div class="input-group shadow-sm rounded overflow-hidden">
-              <span class="input-group-text border-0 bg-white text-muted"
-                >UgX</span
+            <div class="col-md-6">
+              <label for="sale_date_time" class="form-label"
+                >Sale Date & Time</label
               >
               <input
-                type="number"
-                id="cashPrice"
-                class="form-control border-0 fw-bold fs-5"
-                value="1200"
+                type="datetime-local"
+                class="form-control"
+                id="sale_date_time"
+                name="sale_date_time"
+                required
               />
             </div>
           </div>
-          <div class="text-muted h4 mb-0 pt-3">=</div>
-          <div class="flex-grow-1 text-end">
-            <label class="x-small fw-bold text-muted text-uppercase"
-              >Line Total</label
-            >
-            <div class="h3 fw-bold mb-0" id="cashLineTotal">0</div>
-          </div>
-        </div>
+        </fieldset>
 
-        <div class="bg-success-subtle p-4 rounded-3 mb-4">
-          <div class="row align-items-center">
-            <div class="col-md-6 border-end border-success border-opacity-25">
-              <small class="text-success fw-bold">Total Amount Due</small>
-              <h1 class="fw-bold mb-0" id="cashTotalDue">UgX 0</h1>
-            </div>
-            <div class="col-md-6 ps-md-4 mt-3 mt-md-0">
-              <label class="small fw-bold text-success mb-1"
-                >Amount Paid (UgX)</label
+        <!-- Section 2: Customer details for optional recording -->
+        <fieldset>
+          <legend>Customer Information</legend>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="customer_name" class="form-label"
+                >Customer Name</label
               >
               <input
-                type="number"
-                id="cashPaid"
-                class="form-control border-0 shadow-sm py-2"
-                placeholder="Enter received amount"
+                type="text"
+                class="form-control"
+                id="customer_name"
+                name="customer_name"
+                placeholder="Enter customer name"
               />
-              <div class="d-flex justify-content-between mt-2 x-small fw-bold">
-                <span>Change Due:</span
-                ><span id="cashChange" class="text-danger">0 UgX</span>
+            </div>
+            <div class="col-md-6">
+              <label for="phone" class="form-label">Customer Phone</label>
+              <!-- Phone validation: 10 digits only (Ugandan format) -->
+              <input
+                type="tel"
+                class="form-control"
+                id="phone"
+                name="phone"
+                pattern="[0-9]{10}"
+                maxlength="10"
+                placeholder="Enter customer phone number"
+              />
+            </div>
+
+            <div class="col-12">
+              <label class="form-label d-block">Customer Type</label>
+              <!-- Customer classification: Walk-in, Regular, or Credit Customer -->
+              <div class="d-flex flex-wrap gap-3">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="customer_type"
+                    id="walk_in"
+                    value="Walk-in"
+                    required
+                  />
+                  <label class="form-check-label" for="walk_in">Walk-in</label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="customer_type"
+                    id="regular"
+                    value="Regular"
+                  />
+                  <label class="form-check-label" for="regular">Regular</label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="customer_type"
+                    id="credit_customer"
+                    value="Credit"
+                  />
+                  <label class="form-check-label" for="credit_customer"
+                    >Credit Customer</label
+                  >
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </fieldset>
 
-        <div class="d-flex justify-content-end gap-3">
-          <button
-            class="btn btn-link text-dark fw-bold text-decoration-none"
-            onclick="navigateTo('view-agent-home')"
-          >
-            Cancel
-          </button>
-          <button class="btn btn-primary-lime px-4 fw-bold">
-            <i class="bi bi-printer me-2"></i> Record Sale
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-4 mt-4 mt-lg-0">
-      <div class="card border-0 shadow-sm p-3 mb-3">
-        <div class="d-flex justify-content-between mb-3">
-          <h6 class="fw-bold m-0">Recent Sales</h6>
-          <a href="#" class="text-lime small text-decoration-none">View All</a>
-        </div>
-        <div class="d-flex gap-3 mb-3 pb-3 border-bottom">
-          <div
-            class="avatar bg-success-subtle text-success rounded-circle d-flex center-flex flex-shrink-0"
-          >
-            <i class="bi bi-check"></i>
-          </div>
-          <div>
-            <div class="d-flex justify-content-between gap-3">
-              <span class="fw-bold small">Mama Sarah Shop</span
-              ><small class="text-muted x-small">14:15</small>
+        <!-- Section 3: Sold items, quantity, pricing and discount -->
+        <fieldset>
+          <legend>Product Details</legend>
+          <div class="row g-3">
+            <div class="col-12">
+              <label for="item_name" class="form-label"
+                >Product/Item Name</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="item_name"
+                name="item_name"
+                placeholder="Enter product name"
+                required
+              />
             </div>
-            <small class="text-muted x-small">Maize • 200kg</small>
-            <div class="fw-bold small mt-1">240,000 UgX</div>
+
+            <div class="col-md-6">
+              <label for="item_category" class="form-label"
+                >Product Category</label
+              >
+              <select
+                id="item_category"
+                name="item_category"
+                class="form-select"
+                required
+              >
+                <option value="">-- Select Category --</option>
+                <option value="electronics">Cereals & Grains</option>
+                <option value="furniture">Legumes & Pulses</option>
+                <option value="stationary">Oilseeds</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="quantity_sold" class="form-label"
+                >Quantity Sold</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="quantity_sold"
+                name="quantity_sold"
+                min="1"
+                required
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="unitPriceSale" class="form-label">Unit Price</label>
+              <input
+                type="number"
+                class="form-control"
+                id="unitPriceSale"
+                name="unitPriceSale"
+                step="0.01"
+                required
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="discount" class="form-label">Discount%</label>
+              <!-- Optional discount percentage applied to sale -->
+              <input
+                type="number"
+                class="form-control"
+                id="discount"
+                name="discount"
+                min="0"
+                max="100"
+                value="0"
+              />
+            </div>
           </div>
+        </fieldset>
+
+        <!-- Section 4: Payment calculation, method and change -->
+        <fieldset>
+          <legend>Payment & Totals</legend>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="subtotal" class="form-label">Subtotal</label>
+              <!-- Auto-calculated: Quantity × Unit Price -->
+              <input
+                type="number"
+                class="form-control"
+                id="subtotal"
+                name="subtotal"
+                readonly
+                value="0.00"
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="tax" class="form-label">Tax/VAT</label>
+              <!-- Auto-calculated tax based on subtotal -->
+              <input
+                type="number"
+                class="form-control"
+                id="tax"
+                name="tax"
+                readonly
+                value="0.00"
+              />
+            </div>
+
+            <div class="col-12">
+              <label for="totalAmountSale" class="form-label"
+                >Total Amount</label
+              >
+              <!-- Auto-calculated final total: (Subtotal - Discount) + Tax -->
+              <input
+                type="number"
+                class="form-control"
+                id="totalAmountSale"
+                name="totalAmountSale"
+                readonly
+                value="0.00"
+              />
+            </div>
+
+            <div class="col-12">
+              <label class="form-label d-block">Payment Method</label>
+              <!-- Payment mode: Cash, Mobile Money, or Card -->
+              <div class="d-flex flex-wrap gap-3">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="paymentMethodSale"
+                    id="cashSale"
+                    value="Cash"
+                    required
+                  />
+                  <label class="form-check-label" for="cashSale">Cash</label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="paymentMethodSale"
+                    id="mobileMoney"
+                    value="Mobile Money"
+                  />
+                  <label class="form-check-label" for="mobileMoney"
+                    >Mobile Money</label
+                  >
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="paymentMethodSale"
+                    id="card"
+                    value="Card"
+                  />
+                  <label class="form-check-label" for="card">Card</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label for="amount_paid" class="form-label">Amount Paid</label>
+            <!-- Cash amount received from customer -->
+            <input
+              type="number"
+              class="form-control"
+              id="amount_paid"
+              name="amount_paid"
+              min="0"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="change_balance" class="form-label"
+              >Change/Balance</label
+            >
+            <!-- Auto-calculated: Amount Paid - Total Amount -->
+            <input
+              type="number"
+              class="form-control"
+              id="change_balance"
+              name="change_balance"
+              readonly
+              value="0.00"
+            />
+          </div>
+        </fieldset>
+
+        <!-- Section 5: Additional details and notes -->
+        <fieldset>
+          <legend>Additional Information</legend>
+          <div class="row g-3">
+            <div class="col-12">
+              <label for="sales_person" class="form-label">Sales Agent</label>
+              <input
+                type="text"
+                class="form-control"
+                id="sales_person"
+                name="sales_person"
+                required
+              />
+            </div>
+            <div class="col-12">
+              <label for="additional_notes" class="form-label"
+                >Additional Notes</label
+              >
+              <!-- Optional notes for special comments or conditions -->
+              <textarea
+                class="form-control"
+                id="additional_notes"
+                name="additional_notes"
+                rows="3"
+              ></textarea>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Form action buttons -->
+        <div class="d-flex justify-content-end gap-3">
+          <button type="submit" class="btn btn-primary-lime px-4 fw-bold">
+            <i class="bi bi-printer me-2"></i>
+            <!-- Submit button: saves cash sale record -->
+            Record Sale
+          </button>
+          <!-- Reset button: clears all form fields -->
+          <button
+            type="reset"
+            class="btn btn-link bg-danger text-dark fw-bold text-decoration-none"
+          >
+            Clear Form
+          </button>
         </div>
-      </div>
-      <div
-        class="card bg-dark text-white border-0 p-4 shadow-lg overflow-hidden position-relative"
-      >
-        <div class="position-relative z-1">
-          <div class="d-flex align-items-center gap-2 mb-3">
-            <i class="bi bi-graph-up-arrow text-lime"></i
-            ><span class="small fw-bold">DAILY TARGET</span>
-          </div>
-          <h2 class="fw-bold">
-            85% <small class="fs-6 text-white-50">Achieved</small>
-          </h2>
-          <div class="progress bg-secondary mt-2 mb-3" style="height: 6px">
-            <div class="progress-bar bg-lime" style="width: 85%"></div>
-          </div>
-          <p class="x-small text-white-50 mb-0">
-            Keep up the good work! You are nearing the daily sales quota.
-          </p>
-        </div>
-      </div>
+      </form>
     </div>
   </div>
 </section>

@@ -1,143 +1,351 @@
+<!-- Partial: procurement.html - Procurement entry form partial -->
 <section id="view-procurement" class="view-section d-none p-4 p-lg-5">
+  <!-- Breadcrumb navigation for user context -->
   <nav aria-label="breadcrumb" class="mb-3">
     <ol class="breadcrumb x-small">
+      <li class="breadcrumb-item">
+        <a
+          href="#"
+          class="text-muted text-decoration-none"
+          onclick="navigateTo('view-agent-home')"
+          >Home</a
+        >
+      </li>
       <li class="breadcrumb-item text-muted">Inventory</li>
       <li class="breadcrumb-item active fw-bold">New Procurement Entry</li>
     </ol>
   </nav>
-  <h2 class="fw-bold mb-4">Procurement Entry Form</h2>
-  <div class="card border-0 shadow-sm p-4 p-lg-5">
-    <!-- Branch Information -->
-    <div class="mb-5">
-      <div class="d-flex align-items-center gap-2 text-lime mb-3">
-        <i class="bi bi-clock-history"></i>
-        <h6 class="fw-bold mb-0 text-dark">LOGISTICS INFORMATION</h6>
+  <div class="container">
+    <div class="form-wrapper">
+      <h1>Procurement Entry Form</h1>
+      <p class="text-center text-muted mb-4">
+        Fill the details below to record a new entry
+      </p>
+
+      <!-- Success message (shown after form submission) -->
+      <div id="success-message" class="text-center p-5" style="display: none">
+        <div style="font-size: 50px; color: #198754">✔</div>
+        <h2 class="text-success fw-bold">Submission Successful!</h2>
+        <p class="text-dark">
+          The procurement entry for
+          <span id="display-product" class="fw-bold"></span> has been recorded.
+        </p>
+        <button
+          onclick="location.reload()"
+          class="btn btn-primary px-4 mt-3 fw-bold"
+        >
+          Add Another Entry
+        </button>
       </div>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <label class="form-label fw-bold small">Branch Name</label
-          ><select class="form-select bg-light border-0 py-2">
-            <option>Select Branch</option>
-            <option>Maganjo</option>
-            <option>Matugga</option>
-          </select>
-        </div>
-        <div class="col-md-4">
-          <label class="form-label fw-bold small">Date of Entry</label
-          ><input type="date" class="form-control bg-light border-0 py-2" />
-        </div>
-        <div class="col-md-4">
-          <label class="form-label fw-bold small">Time of Entry</label
-          ><input type="time" class="form-control bg-light border-0 py-2" />
-        </div>
-      </div>
-    </div>
-    <!-- Produce information -->
-    <div class="mb-5">
-      <div class="d-flex align-items-center gap-2 text-lime mb-3">
-        <i class="bi bi-basket"></i>
-        <h6 class="fw-bold mb-0 text-dark">PRODUCE DETAILS</h6>
-      </div>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <label class="form-label fw-bold small">Produce Name</label>
-          <div class="input-group">
-            <span class="input-group-text bg-light border-0"
-              ><i class="bi bi-bag"></i></span
-            ><input
-              type="text"
-              class="form-control bg-light border-0 py-2"
-              placeholder="e.g. Matooke"
-            />
+
+      <!-- Main procurement form with file upload support -->
+      <form
+        action="/submit"
+        method="POST"
+        enctype="multipart/form-data"
+        id="procurementForm"
+      >
+        <!-- Section 1: Supplier information and purchase details -->
+        <fieldset>
+          <legend>Supplier & Purchase Details</legend>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="supplier-name" class="form-label"
+                >Supplier Name</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="supplier-name"
+                name="supplier_name"
+                placeholder="e.g., Tech Imports Ltd"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label for="supplier_contact" class="form-label fw-bold"
+                >Supplier Contact</label
+              >
+              <!-- Phone validation: must start with 0 and be exactly 10 digits -->
+              <input
+                type="tel"
+                class="form-control"
+                id="supplier_contact"
+                name="supplier_phone"
+                placeholder="e.g., 0712345678"
+                pattern="[0][0-9]{9}"
+                title="Please enter a valid 10-digit phone number starting with 0"
+                required
+              />
+              <span id="phone-error" class="error-msg"
+                >Invalid phone format (10 digits required).</span
+              >
+            </div>
+
+            <!-- Purchase date: determines the earliest delivery date allowed -->
+            <div class="col-md-6">
+              <label for="purchase_date" class="form-label"
+                >Purchase Date</label
+              >
+              <input
+                type="date"
+                class="form-control"
+                id="purchase_date"
+                name="purchase_date"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label for="invoice_number" class="form-label"
+                >Invoice Number</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="invoice_number"
+                name="invoice_number"
+                placeholder="enter invoice number"
+                required
+              />
+            </div>
+
+            <div class="col-12">
+              <label for="product_name" class="form-label">Product Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="product_name"
+                name="product_name"
+                placeholder="enter product name"
+                required
+              />
+            </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <label class="form-label fw-bold small">Produce Type</label>
-          <div class="input-group">
-            <span class="input-group-text bg-light border-0"
-              ><i class="bi bi-boxes"></i></span
-            ><input
-              type="text"
-              class="form-control bg-light border-0 py-2"
-              placeholder="e.g. Fruit, Vegetable"
-            />
+        </fieldset>
+
+        <!-- Section 2: Product information and pricing -->
+        <!-- NOTE: Total Amount is calculated automatically based on Quantity * Unit Price -->
+        <fieldset>
+          <legend>Product Details</legend>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="productCategory" class="form-label"
+                >Product Category</label
+              >
+              <select
+                id="productCategory"
+                name="productCategory"
+                class="form-select"
+                required
+              >
+                <option value="">-- Select Category --</option>
+                <option value="electronics">Electronics</option>
+                <option value="furniture">Furniture</option>
+                <option value="stationery">Stationery</option>
+                <option value="groceries">Groceries</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label for="quantity" class="form-label">Quantity</label>
+              <input
+                type="number"
+                class="form-control"
+                id="quantity"
+                name="quantity"
+                min="1"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label for="unitPrice" class="form-label">Unit Price</label>
+              <!-- Pricing input: automatically triggers total calculation on change (see procurement.js) -->
+              <input
+                type="number"
+                class="form-control"
+                id="unitPrice"
+                name="unitPrice"
+                step="0.01"
+                min="0.01"
+                required
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label for="totalAmount" class="form-label">Total Amount</label>
+              <!-- Read-only field: automatically calculated as Quantity × Unit Price -->
+              <input
+                type="number"
+                class="form-control"
+                id="totalAmount"
+                name="total_amount"
+                value="0.00"
+                step="0.01"
+                readonly
+              />
+            </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <label class="form-label fw-bold small">Tonnage (kgs)</label>
-          <div class="input-group">
-            <input
-              type="number"
-              class="form-control bg-light border-0 py-2"
-              placeholder="Min. 1000"
-            /><span class="input-group-text bg-light border-0">KG</span>
+        </fieldset>
+
+        <!-- Section 3: Payment terms and delivery information -->
+        <fieldset>
+          <legend>Payment & Delivery</legend>
+
+          <div class="row g-3">
+            <div class="col-12">
+              <label class="form-label d-block">Payment Method</label>
+              <!-- Payment method options: Cash, Mobile Money, Bank Transfer, or Credit -->
+              <div class="d-flex flex-wrap gap-3">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="cash"
+                    name="paymentMethod"
+                    value="Cash"
+                    required
+                  />
+                  <label class="form-check-label" for="cash">Cash</label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="mobile-money"
+                    name="paymentMethod"
+                    value="Mobile Money"
+                  />
+                  <label class="form-check-label" for="mobile-money"
+                    >Mobile Money</label
+                  >
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="bank-transfer"
+                    name="paymentMethod"
+                    value="Bank Transfer"
+                  />
+                  <label class="form-check-label" for="bank-transfer"
+                    >Bank Transfer</label
+                  >
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="credit"
+                    name="paymentMethod"
+                    value="Credit"
+                  />
+                  <label class="form-check-label" for="credit">Credit</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label d-block">Payment Status</label>
+              <!-- Payment status: Paid, Pending, or Partial payment -->
+              <div class="d-flex flex-wrap gap-3">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="paid"
+                    name="payment_status"
+                    value="paid"
+                    required
+                  />
+                  <label class="form-check-label" for="paid">Paid</label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="pending"
+                    name="payment_status"
+                    value="pending"
+                    required
+                  />
+                  <label class="form-check-label" for="pending">Pending</label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="partial"
+                    name="payment_status"
+                    value="partial"
+                    required
+                  />
+                  <label class="form-check-label" for="partial">Partial</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="delivery_date" class="form-label"
+                >Delivery Date</label
+              >
+              <!-- Delivery date: validated in JS to ensure it's not before purchase_date -->
+              <input
+                type="date"
+                class="form-control"
+                id="delivery_date"
+                name="delivery_date"
+                required
+              />
+              <span id="date-error" class="error-msg"
+                >Delivery cannot be before purchase!</span
+              >
+            </div>
+
+            <div class="col-md-6">
+              <label for="file" class="form-label"
+                >Upload Invoice/Receipt</label
+              >
+              <!-- File upload for supporting documents: accepts images and PDFs -->
+              <input
+                type="file"
+                class="form-control"
+                name="file"
+                id="file"
+                accept="image/*, .pdf"
+              />
+            </div>
+
+            <div class="col-12">
+              <label for="notes" class="form-label">Notes/Description</label>
+              <!-- Additional notes for delivery instructions or special requirements -->
+              <textarea
+                class="form-control"
+                name="notes"
+                id="notes"
+                rows="2"
+                placeholder="Enter any specific delivery instructions or notes..."
+              ></textarea>
+            </div>
           </div>
-          <small class="text-muted x-small"
-            >Minimum entry is 1000kg for bulk orders.</small
-          >
+        </fieldset>
+
+        <!-- Form action buttons -->
+        <div class="d-flex justify-content-end gap-2 mt-4">
+          <button type="submit" class="btn btn-primary-lime">
+            <i class="bi bi-printer me-2"></i>
+            <!-- Submit button: saves procurement entry to database -->
+            Record Procurement
+          </button>
+          <!-- Reset button: clears all form fields -->
+          <button type="reset" class="btn btn-danger">Clear Form</button>
         </div>
-      </div>
-    </div>
-    <!-- Financial information that include total cost and selling price for produce -->
-    <div class="row g-5">
-      <div class="col-md-6">
-        <div class="d-flex align-items-center gap-2 text-lime mb-3">
-          <i class="bi bi-cash"></i>
-          <h6 class="fw-bold mb-0 text-dark">FINANCIALS</h6>
-        </div>
-        <div class="mb-3">
-          <label class="form-label fw-bold small">Total Cost (UgX)</label
-          ><input
-            type="number"
-            class="form-control bg-light border-0 py-2 text-end"
-            placeholder="0.00"
-          />
-        </div>
-        <div class="mb-3">
-          <label class="form-label fw-bold small">Selling Price (UgX)/kg</label
-          ><input
-            type="number"
-            class="form-control bg-light border-0 py-2 text-end"
-            placeholder="0.00"
-          />
-        </div>
-      </div>
-      <!-- Supplier information -->
-      <div class="col-md-6">
-        <div class="d-flex align-items-center gap-2 text-lime mb-3">
-          <i class="bi bi-truck"></i>
-          <h6 class="fw-bold mb-0 text-dark">SUPPLIER INFORMATION</h6>
-        </div>
-        <div class="mb-3">
-          <label class="form-label fw-bold small">Dealer Name</label>
-          <div class="input-group">
-            <span class="input-group-text bg-light border-0"
-              ><i class="bi bi-person"></i></span
-            ><input type="text" class="form-control bg-light border-0 py-2" />
-          </div>
-        </div>
-        <div class="mb-3">
-          <label class="form-label fw-bold small">Dealer Contact</label>
-          <div class="input-group">
-            <span class="input-group-text bg-light border-0"
-              ><i class="bi bi-telephone"></i></span
-            ><input
-              type="text"
-              class="form-control bg-light border-0 py-2"
-              value="+256 "
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Two button for submit and clearing of form -->
-    <div class="d-flex justify-content-end gap-3 mt-5">
-      <button class="btn btn-link text-muted text-decoration-none">
-        Clear Form
-      </button>
-      <button class="btn btn-primary-lime px-4 fw-bold">
-        <i class="bi bi-save me-2"></i> Save Procurement
-      </button>
+      </form>
     </div>
   </div>
 </section>

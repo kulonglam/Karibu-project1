@@ -1,24 +1,27 @@
 <nav
   id="sidebar"
-  class="sidebar bg-white border-end d-flex flex-column flex-shrink-0"
+  class="sidebar bg-dark border-end d-flex flex-column flex-shrink-0"
 >
+  <!-- Sidebar header with company logo -->
   <div class="sidebar-header p-4">
     <div class="d-flex align-items-center gap-2">
       <div class="logo-box">
-        <img src="images/logo.png" width="24" height="24" alt="" />
+        <img src="images/logo.png" width="40" height="40" alt="" />
       </div>
-      <span class="fs-5 fw-bold tracking-tight">Karibu Groceries LTD</span>
+      <span class="fs-6 fw-bold tracking-tight">Karibu Groceries LTD</span>
     </div>
   </div>
 
+  <!-- Navigation links (populated dynamically based on user role) -->
   <ul
     class="nav nav-pills flex-column mb-auto px-3 gap-2"
     id="sidebar-nav"
   ></ul>
 
+  <!-- Sidebar footer with user profile and logout -->
   <div class="sidebar-footer p-4 border-top">
     <div class="d-flex align-items-center gap-3 mb-3">
-      <img src="" class="rounded-circle" width="40" alt="User" />
+      <img src="#" class="rounded-circle" width="40" alt="User" />
       <div class="lh-1">
         <small class="d-block fw-bold" id="user-name">User</small>
         <small class="text-muted x-small" id="user-role">Role</small>

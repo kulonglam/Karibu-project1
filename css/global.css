@@ -1,11 +1,16 @@
-/* Global/Base Styles */
+/**
+ * global.css - Global and base styles
+ * Contains theme variables, utility classes, and common component styles
+ * Used across all pages
+ */
 
+/* CSS Custom properties for theme colors and spacing */
 :root {
-  --primary-lime: #63ff1c;
-  --lime-hover: #52d615;
-  --dark-bg: #1a1a1a;
-  --sidebar-width: 260px;
-  --font-sans: 'Inter', sans-serif;
+  --primary-lime: #63ff1c; /* Brand primary color */
+  --lime-hover: #52d615; /* Hover state for lime elements */
+  --dark-bg: #1a1a1a; /* Sidebar and dark sections background */
+  --sidebar-width: 260px; /* Fixed sidebar width */
+  --font-sans: 'Inter', sans-serif; /* Primary font stack */
 }
 
 body {
@@ -14,6 +19,7 @@ body {
   overflow-x: hidden;
 }
 
+/* Brand color utility classes */
 /* --- Brand Colors --- */
 .text-lime {
   color: var(--primary-lime) !important;
@@ -28,6 +34,7 @@ body {
   color: #000;
   border: none;
   transition: all 0.2s;
+  /* Lime button - primary action button */
 }
 
 .btn-primary-lime:hover {
@@ -111,4 +118,307 @@ body {
 .bg-primary-subtle {
   background-color: #dbeafe !important;
   color: #1e3a8a !important;
+}
+
+/* --- Form Styles (modern, accessible) --- */
+.form-group {
+  margin-bottom: 1rem;
+}
+.form-label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #444;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #eef2f5;
+  border-radius: 8px;
+  background: #fff;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.12s ease;
+}
+.form-control.bg-light {
+  background: #f8f9fa;
+}
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-lime);
+  box-shadow: 0 6px 18px rgba(99, 255, 28, 0.06);
+}
+.form-error {
+  color: #d9534f;
+  font-size: 0.82rem;
+  margin-top: 0.35rem;
+  display: none;
+}
+.is-invalid {
+  border-color: #d9534f !important;
+  box-shadow: none !important;
+}
+.form-control.is-invalid + .form-error,
+.form-control.is-invalid ~ .form-error {
+  display: block;
+}
+
+.btn[disabled],
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 200px;
+  }
+
+  body {
+    font-size: 15px;
+  }
+
+  .form-label {
+    font-size: 0.8rem;
+  }
+
+  .form-control {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --sidebar-width: 260px;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  .container,
+  .view-section {
+    padding: 1rem !important;
+  }
+
+  .form-control,
+  .form-select {
+    padding: 0.5rem 0.6rem;
+    font-size: 16px; /* prevent zoom on iOS */
+  }
+
+  .form-label {
+    font-size: 0.75rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .form-error {
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+  }
+
+  .card {
+    padding: 1rem !important;
+  }
+
+  .btn {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.9rem;
+  }
+
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .col-md-6,
+  .col-md-4,
+  .col-md-3 {
+    width: 100%;
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  .table {
+    font-size: 0.85rem;
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+  .avatar-sm {
+    width: 28px;
+    height: 28px;
+  }
+
+  .input-group-text {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .badge {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --sidebar-width: 240px;
+  }
+
+  body {
+    font-size: 13px;
+  }
+
+  .view-section {
+    padding: 0.75rem !important;
+  }
+
+  .form-control,
+  .form-select {
+    padding: 0.45rem 0.5rem;
+    font-size: 16px;
+    border-radius: 6px;
+  }
+
+  .form-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+
+  .card {
+    padding: 0.75rem !important;
+    margin-bottom: 0.75rem;
+  }
+
+  .btn {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.85rem;
+    width: 100%;
+  }
+
+  .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .col-md-6,
+  .col-md-4,
+  .col-md-3,
+  .col-lg-4,
+  .col-lg-8 {
+    width: 100%;
+    flex: 0 0 100%;
+  }
+
+  .d-flex {
+    flex-direction: column;
+  }
+
+  .gap-3 {
+    gap: 0.5rem !important;
+  }
+
+  .p-4 {
+    padding: 0.75rem !important;
+  }
+
+  .p-5 {
+    padding: 1rem !important;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-size: 0.95rem;
+  }
+
+  .table {
+    font-size: 0.8rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.4rem;
+  }
+
+  .breadcrumb {
+    margin-bottom: 0.5rem;
+  }
+
+  .breadcrumb-item {
+    font-size: 0.75rem;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  .input-group-text {
+    border-radius: 6px 6px 0 0;
+    border-bottom: none;
+    padding: 0.4rem;
+  }
+
+  .form-control {
+    border-radius: 0 0 6px 6px;
+  }
+
+  .modal-dialog {
+    margin: 0.5rem;
+  }
+
+  .x-small {
+    font-size: 0.65rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* Mobile-specific styles (e.g., stacked layout, smaller font) */
+  body {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 480px) {
+  /* Small device styles */
+  body {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 767px) and (orientation: landscape) {
+  /* Landscape mobile styles */
+  body {
+    font-size: 14px;
+  }
 }

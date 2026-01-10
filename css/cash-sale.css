@@ -1,16 +1,102 @@
-/* Cash Sale Form Styles */
+/**
+ * cash-sale.css - Cash sale form specific styles
+ * Styles for the walk-in immediate payment sales form
+ */
 
-#cashQty,
-#cashPrice,
-#cashPaid {
-  transition:
-    border-color 0.2s,
-    box-shadow 0.2s;
+body {
+  background-color: #f8f9f9;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-#cashQty:focus,
-#cashPrice:focus,
-#cashPaid:focus {
-  border-color: var(--primary-lime);
-  box-shadow: 0 0 0 3px rgba(99, 255, 28, 0.1);
+/* Form layout and spacing */
+.form-wrapper {
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Typography - Heading colors use green theme (#1e8449) */
+h1,
+p.lead-text,
+legend {
+  color: #1e8449;
+  font-weight: 700;
+}
+
+/* Page title styling */
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+/* Form description/instruction text */
+p.lead-text {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+}
+
+/* Form section grouping with bordered container */
+fieldset {
+  border: 1px solid #d5dbdb;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+/* Section labels positioned at top of fieldset */
+legend {
+  text-align: center;
+  font-size: 1.1rem;
+  float: none;
+  width: auto;
+  padding: 0 10px;
+  margin-left: -10px; /* Aligns visually with border */
+}
+
+/* Input focus state with green theme accent */
+.form-control:focus,
+.form-select:focus {
+  border-color: #1e8449;
+  box-shadow: 0 0 5px rgba(30, 132, 73, 0.4);
+}
+
+/* Primary submit button styling */
+.btn-custom-submit {
+  background-color: #2ecc71;
+  color: white;
+  font-weight: 700;
+  border: none;
+}
+
+/* Submit button hover state - darker green */
+.btn-custom-submit:hover {
+  background-color: #156543;
+  color: white;
+}
+
+/* Secondary/Reset button styling */
+.btn-custom-reset {
+  background-color: #6c757d;
+  color: white;
+  font-weight: 700;
+  border: none;
+}
+
+/* Reset button hover state - darker gray */
+.btn-custom-reset:hover {
+  background-color: #5a6268;
+  color: white;
+}
+
+/* Form field labels with consistent styling */
+.form-label {
+  font-weight: 600;
+  color: #343a40;
 }

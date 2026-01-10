@@ -1,9 +1,12 @@
 /**
  * loader.js - Dynamically loads partial HTML files
- * This file loads all HTML partials into their respective containers
+ * Fetches and injects all partial HTML files into their respective DOM containers
+ * Executes after DOM is loaded to populate the app with UI components
  */
 
+// Asynchronously load all partial HTML files into the DOM
 async function loadPartials() {
+  // Configuration: maps container IDs to partial file paths
   const partials = [
     { container: '#login-container', file: 'partials/login.html' },
     { container: '#sidebar-container', file: 'partials/sidebar.html' },
@@ -18,6 +21,7 @@ async function loadPartials() {
     { container: '#suppliers-container', file: 'partials/suppliers.html' },
   ];
 
+  // Load each partial with error handling
   for (const partial of partials) {
     try {
       const response = await fetch(partial.file);
@@ -28,6 +32,7 @@ async function loadPartials() {
       const html = await response.text();
       const container = document.querySelector(partial.container);
       if (container) {
+        // Inject HTML into the corresponding container
         container.innerHTML = html;
       }
     } catch (error) {
@@ -35,14 +40,14 @@ async function loadPartials() {
     }
   }
 
-  // Re-initialize form handlers after partials are loaded
+  // Re-initialize form handlers after partials are loaded into DOM
   initializeFormHandlers();
 }
 
 function initializeFormHandlers() {
   const loginForm = document.getElementById('loginForm');
   if (loginForm) {
-    // handleLogin is defined in login.js (loaded via script tag)
+    // Attach login form submission handler (defined in login.js)
     // eslint-disable-next-line no-undef
     loginForm.addEventListener('submit', handleLogin);
   }

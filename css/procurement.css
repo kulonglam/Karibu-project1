@@ -1,0 +1,63 @@
+/**
+ * procurement.css - Procurement form specific styles
+ * Styles for supplier and product procurement entry form
+ */
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f4f8;
+  padding: 20px;
+}
+
+/* Form wrapper with card styling - shadow and rounded corners */
+.main-wrapper {
+  max-width: 700px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+/* Page title and header text in blue theme */
+h1,
+.header-text {
+  color: #0d6efd; /* Bootstrap Primary Blue */
+  font-weight: 700;
+}
+
+/* Custom bordered fieldset styling - creates visual section grouping */
+fieldset.custom-fieldset {
+  border: 1px solid #ced4da;
+  padding: 25px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+/* Fieldset legend - positioned at top of border */
+fieldset.custom-fieldset legend {
+  font-weight: 700;
+  color: #0d6efd;
+  width: auto;
+  padding: 0 10px;
+  float: none; /* Reset Bootstrap legend float */
+  font-size: 1.2rem;
+  margin-bottom: 0;
+}
+
+/* Radio button group layout - horizontal flex with consistent spacing */
+.radio-options-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px 25px;
+  padding-top: 5px;
+}
+
+/* Error message styling - red text, hidden by default */
+.error-msg {
+  color: #dc3545;
+  font-size: 0.875em;
+  display: none;
+  margin-top: 4px;
+}
