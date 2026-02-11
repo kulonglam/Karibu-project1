@@ -28,13 +28,13 @@ body {
 .bg-lime {
   background-color: var(--primary-lime) !important;
 }
-
+/* Lime button - primary action button */
 .btn-primary-lime {
   background-color: var(--primary-lime);
   color: #000;
   border: none;
   transition: all 0.2s;
-  /* Lime button - primary action button */
+  
 }
 
 .btn-primary-lime:hover {

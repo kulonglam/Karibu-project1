@@ -1,8 +1,3 @@
-/**
- * login.js - Handle login form submission and password visibility
- * Authenticates users based on username and assigns appropriate role
- */
-
 // Toggle password visibility between plain text and masked
 // eslint-disable-next-line no-unused-vars
 function togglePasswordVisibility() {
@@ -29,11 +24,12 @@ function handleLogin(e) {
   // Determine user role based on username keywords
   let userRole = null;
 
-  if (username.includes('director')) {
+  if (username.includes('director') && document.getElementById('password').value === 'director123') {
     userRole = window.ROLES.DIRECTOR;
-  } else if (username.includes('manager')) {
+  } else if (username.includes('manager') && document.getElementById('password').value === 'manager123') {
     userRole = window.ROLES.MANAGER;
   } else {
+    username.includes('agent') && document.getElementById('password').value === 'agent123';
     userRole = window.ROLES.AGENT;
   }
 
